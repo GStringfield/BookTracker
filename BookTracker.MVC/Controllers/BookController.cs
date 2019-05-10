@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BookTracker.WebMVC.Controllers
+namespace BookTracker.MVC.Controllers
 {
     public class BookController : Controller
     {
@@ -32,7 +32,7 @@ namespace BookTracker.WebMVC.Controllers
         public ActionResult Create(BookCreate model)
         {
             if (!ModelState.IsValid) return View(model);
-           
+
             var service = CreateBookService();
 
 
@@ -86,7 +86,7 @@ namespace BookTracker.WebMVC.Controllers
             if (!ModelState.IsValid) return View(model);
 
             if (model.BookID != bookID)
-                
+
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
@@ -107,4 +107,5 @@ namespace BookTracker.WebMVC.Controllers
 
 
     }
+
 }
