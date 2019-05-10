@@ -105,7 +105,25 @@ namespace BookTracker.MVC.Controllers
 
         }
 
+        [ActionName("Delete")]
+        public ActionResult Delete(int bookID)
+        {
+            var svc = CreateBookService();
+            var model = svc.GetBookByID(bookID);
 
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int bookID)
+        {
+            var service = CreateBookService();
+            service.DeleteBook(bookID);
+            TempData["SaveResult"] = "Your book was deleted";
+            return RedirectToAction("Index");
+        }
     }
 
 }

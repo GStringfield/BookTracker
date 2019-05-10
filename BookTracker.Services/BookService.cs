@@ -101,6 +101,22 @@ namespace BookTracker.Services
 
                 return ctx.SaveChanges() == 1;
             }
+
+        }
+
+        public bool DeleteBook(int bookID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+            ctx
+                .Books
+                .Single(e => e.BookID == bookID && e.UserID == _userID);
+
+                ctx.Books.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
         }
     }
 }
