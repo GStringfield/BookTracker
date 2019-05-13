@@ -58,6 +58,7 @@
     <Compile Include="BookDetail.cs" />
     <Compile Include="BookEdit.cs" />
     <Compile Include="BookListItem.cs" />
+    <Compile Include="BookOwnedModels\BookOwnedCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
