@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace BookTracker.Models
 {
-    public class BookOwnedCreate
+    public class BookInventoryCreate
     {
         public enum BookType
         {
 
-            [Display(Name = "Physical Book")]
-            PhysicalBook = 1,
+            [Display(Name = "Traditional Book")]
+            TraditionalBook = 1,
 
             [Display(Name = "eBook")]
             eBook,

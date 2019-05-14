@@ -11,7 +11,7 @@ namespace BookTracker.Data
     {
         public enum BookType
         {
-            PhysicalBook = 1,
+            TraditionalBook = 1,
             eBook,
             AudioBook
         }

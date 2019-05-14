@@ -5,20 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookTracker.Models
+namespace BookTracker.Models.BookInventoryModels
 {
-    public class BookListItem
+    class BookInventoryDetails
     {
-        [Key]
+        
         public int BookInventoryID { get; set; }
         public int BookID { get; set; }
-        public int  UserID { get; set; }
+        public int UserID { get; set; }
+
+        [Display(Name = "Book Title")]
         public string Title { get; set; }
+
+        [Display(Name = "Author")]
         public string Author { get; set; }
 
-        //public override string ToString()
-        //{
-        //    return base.ToString();
-        //}
+        [Display(Name = "Notes")]
+        public string Notes  { get; set; }
+
+
     }
 }

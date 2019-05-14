@@ -45,7 +45,7 @@ namespace BookTracker.Services
                 var query =
                                      ctx
                                          .Books
-                                         //TODO: apply boolean properties here
+                                         //TODO: apply boolean properties here on other
                                          .Where(e => e.UserID == _userID)
                                          .Select(
                                              e =>
