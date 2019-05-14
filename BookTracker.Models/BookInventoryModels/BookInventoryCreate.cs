@@ -4,23 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BookTracker.Data.BookInventory;
 
 namespace BookTracker.Models
 {
     public class BookInventoryCreate
     {
-        public enum BookType
-        {
-
-            [Display(Name = "Traditional Book")]
-            TraditionalBook = 1,
-
-            [Display(Name = "eBook")]
-            eBook,
-
-            [Display(Name = "Audio Book")]
-            AudioBook
-        }
+        
 
         public Guid UserID { get; set; }
         public int BookID { get; set; }
@@ -34,5 +24,7 @@ namespace BookTracker.Models
         public string Author { get; set; }
 
         public string Notes { get; set; }
+
+        public BookType BookType { get; set; }
     }
 }

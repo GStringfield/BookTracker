@@ -20,21 +20,19 @@ namespace BookTracker.Services
         public bool BookInventoryCreate(BookInventoryCreate model)
         {
             var content =
-                new BookOwned()
+                new BookInventory()
                 {
                     
                     UserID = _userID,
                     BookID = model.BookID,
-                    BookType = bookType,
-                    Title = model.Title,
-                    Author = model.Author,
+                    TypeofBook = model.BookType
 
                 };
 
             //TODO: apply boolean properties here
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Books.Add(entity);
+                ctx.BookInventory.Add(content);
                 return ctx.SaveChanges() == 1;
             }
         }

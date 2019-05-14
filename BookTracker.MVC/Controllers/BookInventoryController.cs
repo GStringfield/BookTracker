@@ -1,5 +1,6 @@
 ﻿using BookTracker.Models;
 using BookTracker.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -119,5 +120,4 @@ namespace BookTracker.MVC.Controllers
             return RedirectToAction("Index");
         }
     }
-}
 }

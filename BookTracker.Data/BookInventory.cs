@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookTracker.Data
 {
-    class BookInventory
+    public class BookInventory
     {
         public enum BookType
         {
@@ -23,6 +23,8 @@ namespace BookTracker.Data
         //this is my foriegn key need this on models as well
         public int BookID { get; set; }
 
+        public Guid UserID { get; set; }
+
         public bool IsOwned { get; set; }
 
         public bool HasRead { get; set; }
@@ -32,6 +34,8 @@ namespace BookTracker.Data
         { get; set; }
 
         public string Notes { get; set; }
+
+        public BookType  TypeofBook { get; set; }
 
     }
 }
