@@ -24,12 +24,14 @@ namespace BookTracker.Models
         [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
         public string Author { get; set; }
 
-        [MaxLength(1000, ErrorMessage = "There are too many characters in this field.")]
-        public string Notes { get; set; }
+     
+        public bool HasRead { get; set; }
 
-
-        
         [Display(Name = "The type of Book owned")]
         public BookType BookType { get; set; }
+
+       // [DataType(DataType.MultilineText)]
+        [MaxLength(1000, ErrorMessage = "There are too many characters in this field.")]
+        public string Notes { get; set; }
     }
 }
