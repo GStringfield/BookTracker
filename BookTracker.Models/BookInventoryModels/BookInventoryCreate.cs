@@ -14,6 +14,7 @@ namespace BookTracker.Models
 
         public Guid UserID { get; set; }
         public int BookID { get; set; }
+
         [Required]
         [MinLength(1, ErrorMessage = "Please enter at least 1 character.")]
         [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
@@ -23,8 +24,12 @@ namespace BookTracker.Models
         [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
         public string Author { get; set; }
 
+        [MaxLength(1000, ErrorMessage = "There are too many characters in this field.")]
         public string Notes { get; set; }
 
+
+        
+        [Display(Name = "The type of Book owned")]
         public BookType BookType { get; set; }
     }
 }

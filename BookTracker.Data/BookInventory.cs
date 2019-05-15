@@ -11,7 +11,8 @@ namespace BookTracker.Data
     {
         public enum BookType
         {
-            TraditionalBook = 1,
+            DoNotOwn,
+            TraditionalBook,
             eBook,
             AudioBook
         }
@@ -35,7 +36,7 @@ namespace BookTracker.Data
 
         public string Notes { get; set; }
 
-        public BookType  TypeofBook { get; set; }
+        public BookType  TypeOfBook { get; set; }
 
     }
 }

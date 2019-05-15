@@ -8,6 +8,22 @@ namespace BookTracker.Data.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.BookInventory",
+                c => new
+                    {
+                        BookInventoryID = c.Int(nullable: false, identity: true),
+                        BookID = c.Int(nullable: false),
+                        UserID = c.Guid(nullable: false),
+                        IsOwned = c.Boolean(nullable: false),
+                        HasRead = c.Boolean(nullable: false),
+                        Notes = c.String(),
+                        TypeofBook = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.BookInventoryID)
+                .ForeignKey("dbo.Book", t => t.BookID, cascadeDelete: true)
+                .Index(t => t.BookID);
+            
+            CreateTable(
                 "dbo.Book",
                 c => new
                     {
@@ -96,16 +112,19 @@ namespace BookTracker.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.BookInventory", "BookID", "dbo.Book");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.BookInventory", new[] { "BookID" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
             DropTable("dbo.Book");
+            DropTable("dbo.BookInventory");
         }
     }
 }

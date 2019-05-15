@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BookTracker.Data.BookInventory;
 
 namespace BookTracker.Services
 {
@@ -25,11 +26,13 @@ namespace BookTracker.Services
                     
                     UserID = _userID,
                     BookID = model.BookID,
-                    TypeofBook = model.BookType
+                    TypeOfBook = model.BookType
 
                 };
 
             //TODO: apply boolean properties here
+
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.BookInventory.Add(content);

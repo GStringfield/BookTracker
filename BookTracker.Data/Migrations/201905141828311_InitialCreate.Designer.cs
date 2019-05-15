@@ -13,7 +13,7 @@ namespace BookTracker.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201905091757592_InitialCreate"; }
+            get { return "201905141828311_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

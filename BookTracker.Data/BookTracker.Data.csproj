@@ -57,9 +57,13 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookInventory.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201905091757592_InitialCreate.cs" />
-    <Compile Include="Migrations\201905091757592_InitialCreate.Designer.cs">
-      <DependentUpon>201905091757592_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201905141828311_InitialCreate.cs" />
+    <Compile Include="Migrations\201905141828311_InitialCreate.Designer.cs">
+      <DependentUpon>201905141828311_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905151347019_Changed enum.cs" />
+    <Compile Include="Migrations\201905151347019_Changed enum.Designer.cs">
+      <DependentUpon>201905151347019_Changed enum.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,8 +73,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905091757592_InitialCreate.resx">
-      <DependentUpon>201905091757592_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905141828311_InitialCreate.resx">
+      <DependentUpon>201905141828311_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905151347019_Changed enum.resx">
+      <DependentUpon>201905151347019_Changed enum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

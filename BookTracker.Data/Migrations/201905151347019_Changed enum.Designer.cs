@@ -7,13 +7,13 @@ namespace BookTracker.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class UpdateDatabase : IMigrationMetadata
+    public sealed partial class Changedenum : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateDatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Changedenum));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905141820247_Update-Database"; }
+            get { return "201905151347019_Changed enum"; }
         }
         
         string IMigrationMetadata.Source
