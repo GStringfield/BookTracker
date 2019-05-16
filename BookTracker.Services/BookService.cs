@@ -27,7 +27,7 @@ namespace BookTracker.Services
                     BookID = model.BookID,
                     Title = model.Title,
                     Author = model.Author,
-                  
+
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -51,11 +51,11 @@ namespace BookTracker.Services
                                              e =>
                                                  new BookListItem
                                                  {
-                                                    
+
                                                      BookID = e.BookID,
                                                      Title = e.Title,
                                                      Author = e.Author
-                                                    
+
 
                                                  }
                                                   );

@@ -23,14 +23,12 @@ namespace BookTracker.Services
             var content =
                 new BookInventory()
                 {
-                    
+                    BookInventoryID = model.BookInventoryID,
                     UserID = _userID,
                     BookID = model.BookID,
-                    TypeOfBook = model.BookType
+                    TypeOfBook = model.TypeOfBook
 
                 };
-
-            //TODO: apply boolean properties here
 
 
             using (var ctx = new ApplicationDbContext())
@@ -40,7 +38,7 @@ namespace BookTracker.Services
             }
         }
 
-        public IEnumerable<BookListItem> GetBooks()
+        public IEnumerable<BookInventoryListItem> GetBooks()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -50,10 +48,11 @@ namespace BookTracker.Services
                         .Where(e => e.UserID == _userID)
                         .Select(
                             e =>
-                                new BookListItem
+                                new BookInventoryListItem
                                 {
                                     BookID = e.BookID,
                                     Title = e.Title,
+                                    Author = e.Author
                                 }
                                     
                         );
@@ -62,9 +61,59 @@ namespace BookTracker.Services
             }
         }
 
+        public BookInventoryDetails GetBookByInventoryID(int bookInventoryID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+             ctx
+                 .Books
+                 .Single(e => e.BookID == bookInventoryID && e.UserID == _userID);
+                return
+                    new BookInventoryDetails
+                    {
+                        BookID = entity.BookID,
+                        Title = entity.Title,
+                        Author = entity.Author
+
+                    };
+            }
 
 
 
+        }
+        public bool UpdateBook(BookInventoryEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+             ctx
+                 .Books
+                 .Single(e => e.BookID == model.BookID && e.UserID == _userID);
+
+                entity.BookID = model.BookID;
+                entity.Title = model.Title;
+                entity.Author = model.Author;
+
+                return ctx.SaveChanges() == 1;
+            }
+
+        }
+
+        public bool DeleteBook(int bookInventoryID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+            ctx
+                .Books
+                .Single(e => e.BookID == bookInventoryID && e.UserID == _userID);
+
+                ctx.Books.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
     }
 }

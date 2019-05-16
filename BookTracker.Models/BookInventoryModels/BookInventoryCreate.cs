@@ -10,8 +10,8 @@ namespace BookTracker.Models
 {
     public class BookInventoryCreate
     {
-        
 
+        public int BookInventoryID { get; set; }
         public Guid UserID { get; set; }
         public int BookID { get; set; }
 
@@ -28,7 +28,7 @@ namespace BookTracker.Models
         public bool HasRead { get; set; }
 
         [Display(Name = "The type of Book owned")]
-        public BookType BookType { get; set; }
+        public BookType TypeOfBook { get; set; }
 
        // [DataType(DataType.MultilineText)]
         [MaxLength(1000, ErrorMessage = "There are too many characters in this field.")]

@@ -26,16 +26,17 @@ namespace BookTracker.MVC.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(BookCreate model)
+        public ActionResult Create(BookInventoryCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            var service = CreateBookService();
+            var service = CreateInventoryService();
 
 
-            if (service.CreateBook(model))
+            if (service.BookInventoryCreate(model))
             {
                 TempData["SaveResult"] = "Your Book was added.";
                 return RedirectToAction("Index");
@@ -46,48 +47,52 @@ namespace BookTracker.MVC.Controllers
             return View(model);
 
         }
-        private BookService CreateBookService()
+        private BookInventoryService CreateInventoryService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new BookService(userID);
-            return service;
+            var services = new BookInventoryService(userID);
+            return services;
         }
-        public ActionResult Details(int bookID)
+        public ActionResult Details(int bookInventoryID)
         {
-            var svc = CreateBookService();
-            var model = svc.GetBookByID(bookID);
+            var svc = CreateInventoryService();
+            var model = svc.GetBookByInventoryID(bookInventoryID);
 
             return View(model);
         }
 
-        public ActionResult Edit(int bookID)
+        public ActionResult Edit(int bookInventoryID)
         {
-            var service = CreateBookService();
-            var detail = service.GetBookByID(bookID);
+            var service = CreateInventoryService();
+            var detail = service.GetBookByInventoryID(bookInventoryID);
             var model =
-                new BookEdit
+                new BookInventoryEdit
                 {
+                    BookInventoryID = detail.BookInventoryID,
                     BookID = detail.BookID,
                     Title = detail.Title,
-                    Author = detail.Author
+                    Author = detail.Author,
+                    HasRead = detail.HasRead,
+                    TypeOfBook = detail.TypeOfBook,
+                    Notes = detail.Notes
                 };
             return View(model);
 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int bookID, BookEdit model)
+        public ActionResult Edit(int bookInventoryID, BookInventoryEdit model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.BookID != bookID)
+            if (model.BookInventoryID != bookInventoryID)
 
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
 
-            var service = CreateBookService();
+            var service = CreateInventoryService();
 
             if (service.UpdateBook(model))
             {
@@ -101,10 +106,10 @@ namespace BookTracker.MVC.Controllers
         }
 
         [ActionName("Delete")]
-        public ActionResult Delete(int bookID)
+        public ActionResult Delete(int bookInventoryID)
         {
-            var svc = CreateBookService();
-            var model = svc.GetBookByID(bookID);
+            var svc = CreateInventoryService();
+            var model = svc.GetBookByInventoryID(bookInventoryID);
 
             return View(model);
         }
@@ -112,10 +117,10 @@ namespace BookTracker.MVC.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeletePost(int bookID)
+        public ActionResult DeletePost(int bookInventoryID)
         {
-            var service = CreateBookService();
-            service.DeleteBook(bookID);
+            var service = CreateInventoryService();
+            service.DeleteBook(bookInventoryID);
             TempData["SaveResult"] = "Your book was deleted";
             return RedirectToAction("Index");
         }

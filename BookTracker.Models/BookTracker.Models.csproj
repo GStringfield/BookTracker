@@ -60,6 +60,7 @@
     <Compile Include="BookInventoryModels\BookInventoryDetails.cs" />
     <Compile Include="BookInventoryModels\BookInventoryEdit.cs" />
     <Compile Include="BookInventoryModels\BookInventoryListItem.cs" />
+    <Compile Include="BookInventoryModels\BookInventoryDelete.cs" />
     <Compile Include="BookListItem.cs" />
     <Compile Include="BookInventoryModels\BookInventoryCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

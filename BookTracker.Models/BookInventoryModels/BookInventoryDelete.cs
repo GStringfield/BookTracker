@@ -8,25 +8,23 @@ using static BookTracker.Data.BookInventory;
 
 namespace BookTracker.Models
 {
-    public class BookInventoryEdit
+     public class BookInventoryDelete
     {
-        
         public int BookInventoryID { get; set; }
-        //this is my foriegn key need this on models as well
         public int BookID { get; set; }
+        public int UserID { get; set; }
 
-       
+        [Display(Name = "Book Title")]
         public string Title { get; set; }
 
-
+        [Display(Name = "Author")]
         public string Author { get; set; }
 
         public bool HasRead { get; set; }
 
-        public BookType TypeOfBook { get; set; }
-
+        [Display(Name = "Notes")]
         public string Notes { get; set; }
 
-
+        public BookType TypeOfBook { get; set; }
     }
 }

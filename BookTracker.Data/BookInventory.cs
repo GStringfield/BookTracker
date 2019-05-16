@@ -26,8 +26,7 @@ namespace BookTracker.Data
 
         public Guid UserID { get; set; }
 
-        public bool IsOwned { get; set; }
-
+       
         public bool HasRead { get; set; }
 
         //this is my navigation propery

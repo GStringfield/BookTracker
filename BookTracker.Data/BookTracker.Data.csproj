@@ -65,6 +65,10 @@
     <Compile Include="Migrations\201905151347019_Changed enum.Designer.cs">
       <DependentUpon>201905151347019_Changed enum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905161936357_don%27t remember.cs" />
+    <Compile Include="Migrations\201905161936357_don%27t remember.Designer.cs">
+      <DependentUpon>201905161936357_don%27t remember.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905151347019_Changed enum.resx">
       <DependentUpon>201905151347019_Changed enum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905161936357_don%27t remember.resx">
+      <DependentUpon>201905161936357_don%27t remember.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

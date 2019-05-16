@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BookTracker.Data.BookInventory;
 
-namespace BookTracker.Models.BookInventoryModels
+namespace BookTracker.Models
 {
-    class BookInventoryDetails
+    public class BookInventoryDetails
     {
         
         public int BookInventoryID { get; set; }
@@ -20,9 +21,12 @@ namespace BookTracker.Models.BookInventoryModels
         [Display(Name = "Author")]
         public string Author { get; set; }
 
+        public bool HasRead { get; set; }
+
         [Display(Name = "Notes")]
         public string Notes  { get; set; }
 
+        public BookType TypeOfBook { get; set; }
 
     }
 }
