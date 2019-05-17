@@ -245,6 +245,7 @@
     <Content Include="Views\BookInventory\Edit.cshtml" />
     <Content Include="Views\BookInventory\Details.cshtml" />
     <Content Include="Views\BookInventory\Delete.cshtml" />
+    <Content Include="Views\BookInventory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

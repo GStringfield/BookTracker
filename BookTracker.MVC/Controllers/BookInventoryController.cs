@@ -15,7 +15,7 @@ namespace BookTracker.MVC.Controllers
         public ActionResult Index()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new BookService(userID);
+            var service = new BookInventoryService(userID);
             var model = service.GetBooks();
 
             return View(model);  

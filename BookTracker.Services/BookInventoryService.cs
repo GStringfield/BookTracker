@@ -50,9 +50,11 @@ namespace BookTracker.Services
                             e =>
                                 new BookInventoryListItem
                                 {
+                                  
                                     BookID = e.BookID,
                                     Title = e.Title,
-                                    Author = e.Author
+                                    Author = e.Author,
+                                   
                                 }
                                     
                         );
@@ -72,9 +74,11 @@ namespace BookTracker.Services
                 return
                     new BookInventoryDetails
                     {
+                       
                         BookID = entity.BookID,
                         Title = entity.Title,
                         Author = entity.Author
+                       
 
                     };
             }
