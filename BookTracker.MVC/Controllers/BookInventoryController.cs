@@ -40,6 +40,8 @@ namespace BookTracker.MVC.Controllers
         {
             var svc = CreateBookService();
             ViewBag.BookID = new SelectList(svc.GetBooks(), "BookID", "TitleAndAuthor");
+
+
             return View();
         }
         //POST
