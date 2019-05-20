@@ -26,7 +26,7 @@ namespace BookTracker.MVC.Controllers
         {
             return View();
         }
-
+        //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(BookCreate model)
@@ -45,8 +45,6 @@ namespace BookTracker.MVC.Controllers
             ModelState.AddModelError("", "Book could not be added.");
 
             return View(model);
-
-
         }
 
         private BookService CreateBookService()

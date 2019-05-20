@@ -83,8 +83,6 @@ namespace BookTracker.Services
                     };
             }
 
-
-
         }
 
         public bool UpdateBook(BookEdit model)

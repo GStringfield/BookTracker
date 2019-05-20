@@ -14,19 +14,35 @@ namespace BookTracker.MVC.Controllers
         // GET: BookInventory
         public ActionResult Index()
         {
-            var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new BookInventoryService(userID);
+            BookInventoryService service = CreateBookInventoryService();
             var model = service.GetBooks();
 
-            return View(model);  
+            return View(model);
+        }
+
+        //extracted from other methods to its own so can be used over and over
+        private BookInventoryService CreateBookInventoryService()
+        {
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            var service = new BookInventoryService(userID);
+            return service;
+        }
+
+        private BookService CreateBookService()
+        {
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            var service = new BookService(userID);
+            return service;
         }
 
         //get
         public ActionResult Create()
         {
+            var svc = CreateBookService();
+            ViewBag.BookID = new SelectList(svc.GetBooks(), "BookID", "TitleAndAuthor");
             return View();
         }
-
+        //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(BookInventoryCreate model)
@@ -94,7 +110,7 @@ namespace BookTracker.MVC.Controllers
 
             var service = CreateInventoryService();
 
-            if (service.UpdateBook(model))
+            if (service.UpdateInventoryBook(model))
             {
                 TempData["SaveResult"] = "Your book was updated.";
                 return RedirectToAction("Index");
@@ -120,7 +136,7 @@ namespace BookTracker.MVC.Controllers
         public ActionResult DeletePost(int bookInventoryID)
         {
             var service = CreateInventoryService();
-            service.DeleteBook(bookInventoryID);
+            service.DeleteInventoryBook(bookInventoryID);
             TempData["SaveResult"] = "Your book was deleted";
             return RedirectToAction("Index");
         }

@@ -12,10 +12,13 @@ namespace BookTracker.Models
     {
         
         public int BookInventoryID { get; set; }
+
         //this is my foriegn key need this on models as well
         public int BookID { get; set; }
 
-       
+        public Guid UserID { get; set; }
+
+
         public string Title { get; set; }
 
 

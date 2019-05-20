@@ -16,6 +16,11 @@ namespace BookTracker.Models
         public string Title { get; set; }
         public string Author { get; set; }
 
+        public string TitleAndAuthor
+        {
+            get => $"{Title} Class: {Author}";
+        }
+
         //public override string ToString()
         //{
         //    return base.ToString();
