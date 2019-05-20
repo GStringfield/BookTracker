@@ -63,6 +63,8 @@
     <Compile Include="BookInventoryModels\BookInventoryDelete.cs" />
     <Compile Include="BookListItem.cs" />
     <Compile Include="BookInventoryModels\BookInventoryCreate.cs" />
+    <Compile Include="FutureReading\FutureReadingCreate.cs" />
+    <Compile Include="FutureReading\FutureReadingDelete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
