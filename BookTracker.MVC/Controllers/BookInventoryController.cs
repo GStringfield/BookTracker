@@ -41,7 +41,7 @@ namespace BookTracker.MVC.Controllers
             var svc = CreateBookService();
             ViewBag.BookID = new SelectList(svc.GetBooks(), "BookID", "TitleAndAuthor");
 
-
+ 
             return View();
         }
         //POST
@@ -65,12 +65,15 @@ namespace BookTracker.MVC.Controllers
             return View(model);
 
         }
+
         private BookInventoryService CreateInventoryService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
             var services = new BookInventoryService(userID);
             return services;
         }
+
+
         public ActionResult Details(int bookInventoryID)
         {
             var svc = CreateInventoryService();
@@ -78,6 +81,7 @@ namespace BookTracker.MVC.Controllers
 
             return View(model);
         }
+
 
         public ActionResult Edit(int bookInventoryID)
         {

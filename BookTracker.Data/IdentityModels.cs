@@ -35,6 +35,9 @@ namespace BookTracker.Data
 
         public DbSet<Book> Books { get; set; }
         public DbSet<BookInventory> BookInventory { get; set; }
+        public DbSet<FutureReading> FutureReading { get; set; }
+
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

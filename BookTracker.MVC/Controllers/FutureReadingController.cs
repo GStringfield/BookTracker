@@ -1,4 +1,5 @@
 ﻿using BookTracker.Models;
+using BookTracker.Models.FutureReading;
 using BookTracker.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -11,34 +12,53 @@ namespace BookTracker.MVC.Controllers
 {
     public class FutureReadingController : Controller
     {
-        // GET: FutureReading
-        [Authorize]
+        // GET: BookInventory
         public ActionResult Index()
         {
-            var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new BookService(userID);
+            FutureReadingService service = CreateFutureReadingService();
             var model = service.GetBooks();
 
             return View(model);
         }
+        //extracted from other methods to its own so can be used over and over
+        private FutureReadingService CreateFutureReadingService()
+        {
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            var service = new FutureReadingService(userID);
+            return service;
+        }
+
+        //what the Hell
+        private BookService CreateBookService()
+        {
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            var service = new BookService(userID);
+            return service;
+        }
 
         //get
+       
         public ActionResult Create()
         {
+            var svc = CreateFutureReadingService();
+            ViewBag.BookID = new SelectList(svc.GetBooks(), "BookID", "TitleAndAuthor");
+
+
             return View();
         }
+
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(BookCreate model)
+        //this all relates to the create MODEL
+        public ActionResult Create(FutureReadingCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new BookService(userID);
+            var service = CreateFutureReadingService();
 
-
-            if (service.CreateBook(model))
+            //actually from service
+            if (service.FutureReadingCreate(model))
             {
                 TempData["SaveResult"] = "Your Book was added.";
                 return RedirectToAction("Index");
@@ -47,23 +67,56 @@ namespace BookTracker.MVC.Controllers
             ModelState.AddModelError("", "Book could not be added.");
 
             return View(model);
-        }
 
-            private BookService CreateBookService()
+        }
+      
+        //leaving out Details for now
+
+        public ActionResult Edit(int fututreReadingID)
+        {
+            var service = CreateFutureReadingService();
+            var detail = service.GetBookByFutureReadingID(futureReadingID);
+            var model =
+                new FutureReadingEdit
+                {
+                   FutureReadingID = detail.FutureReadingID,
+                    BookID = detail.BookID,
+                    Title = detail.Title,
+                    Author = detail.Author,
+                    Notes = detail.Notes
+                };
+            return View(model);
+
+        }
+        public ActionResult Edit(int futureReadingID, FutureReadingEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.FutureReadingID != futureReadingID)
+
             {
-                var userID = Guid.Parse(User.Identity.GetUserId());
-                var service = new BookService(userID);
-                return service;
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
             }
 
+            var service = CreateFutureReadingService();
 
+            if (service.UpdateFutureReading(model))
+            {
+                TempData["SaveResult"] = "Your book was updated.";
+                return RedirectToAction("Index");
+            }
 
+            ModelState.AddModelError("", "Your book could not be updated.");
+            return View(model);
+
+        }
 
         [ActionName("Delete")]
         public ActionResult Delete(int futureReadingID)
         {
-            var svc = CreateBookService();
-            var model = svc.GetBookByID(futureReadingID);
+            var svc = CreateFutureReadingService();
+            var model = svc.GetBookByFutureReadingID(futureReadingID);
 
             return View(model);
         }
@@ -73,8 +126,8 @@ namespace BookTracker.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletePost(int futureReadingID)
         {
-            var service = CreateBookService();
-            service.DeleteBook(futureReadingID);
+            var service = CreateFutureReadingService();
+            service.DeleteFutureReadingBook(futureReadingID);
             TempData["SaveResult"] = "Your book was deleted";
             return RedirectToAction("Index");
         }
