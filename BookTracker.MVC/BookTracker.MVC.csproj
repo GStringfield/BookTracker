@@ -247,10 +247,10 @@
     <Content Include="Views\BookInventory\Index.cshtml" />
     <Content Include="Views\BookInventory\Create.cshtml" />
     <Content Include="Views\BookInventory\Edit.cshtml" />
+    <Content Include="Views\FutureReading\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\FutureReading\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

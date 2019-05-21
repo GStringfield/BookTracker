@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookTracker.Models.FutureReading
+namespace BookTracker.Models
 {
     public class FutureReadingListItem
     {

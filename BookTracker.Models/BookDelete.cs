@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 
 namespace BookTracker.Models
 {
-    public class FutureReadingDelete
+    public class BookDelete
     {
-       
-        public int FutureReadingID { get; set; }
-        
         public int BookID { get; set; }
+        public int UserID { get; set; }
 
+        [Display(Name = "Book Title")]
         public string Title { get; set; }
 
+        [Display(Name = "Author")]
         public string Author { get; set; }
-
-        public string Notes { get; set; }
-     
     }
 }
