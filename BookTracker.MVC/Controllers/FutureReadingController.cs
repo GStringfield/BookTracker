@@ -73,12 +73,12 @@ namespace BookTracker.MVC.Controllers
         public ActionResult Details(int futureReadingID)
         {
             var svc = CreateFutureReadingService();
-            var model = svc.GetBookByFutureReadingID(futureReadingID;
+            var model = svc.GetBookByFutureReadingID(futureReadingID);
 
             return View(model);
         }
 
-        public ActionResult Edit(int fututreReadingID)
+        public ActionResult Edit(int futureReadingID)
         {
             var service = CreateFutureReadingService();
             var detail = service.GetBookByFutureReadingID(futureReadingID);
@@ -133,7 +133,7 @@ namespace BookTracker.MVC.Controllers
         public ActionResult DeletePost(int futureReadingID)
         {
             var service = CreateFutureReadingService();
-            service.DeleteFutureReadingBook(futureReadingID);
+            service.FutureReadingDelete(futureReadingID);
             TempData["SaveResult"] = "Your book was deleted";
             return RedirectToAction("Index");
         }
