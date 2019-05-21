@@ -29,7 +29,6 @@ namespace BookTracker.Models
         public BookType TypeOfBook { get; set; }
 
         public string Notes { get; set; }
-
-
+        public int FutureReadingID { get; set; }
     }
 }

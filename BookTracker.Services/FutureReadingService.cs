@@ -45,7 +45,7 @@ namespace BookTracker.Services
             {
                 var query =
                     ctx
-                        .BookInventory
+                        .FutureReading
                         .Where(e => e.UserID == _userID)
                         .Select(
                             e =>
@@ -61,23 +61,45 @@ namespace BookTracker.Services
                         );
                 return query.ToArray();
             }
-}
+        }
 
-        //left out Details for now
-        public bool UpdateInventoryBook(BookInventoryEdit model)
+
+
+        public FutureReadingDetails GetBookByFutureReadingID(int futureReadingID)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
              ctx
-                 .BookInventory
+                 .FutureReading
+                 .Single(e => e.FutureReadingID == futureReadingID && e.UserID == _userID);
+                return
+
+                    new FutureReadingDetails
+                    {
+                        FutureReadingID = entity.FutureReadingID,
+                        BookID = entity.BookID,
+                        Title = entity.Book.Title,
+                        Author = entity.Book.Author,
+                        Notes = entity.Notes,
+
+                    };
+            }
+        }
+        public bool UpdateFutureReading(BookInventoryEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+             ctx
+                 .FutureReading
                  .Single(e => e.FutureReadingID == model.FutureReadingID && e.UserID == _userID);
 
                 entity.FutureReadingID = model.FutureReadingID;
                 entity.BookID = model.BookID;
-                entity.UserID = _userID;  
+                entity.UserID = _userID;
                 entity.Notes = model.Notes;
-             
+
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -87,14 +109,47 @@ namespace BookTracker.Services
             {
                 var entity =
             ctx
-                .BookInventory
+                .FutureReading
                 .Single(e => e.FutureReadingID == futureReadingID && e.UserID == _userID);
 
-                ctx.BookInventory.Remove(entity);
+                ctx.FutureReading.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool UpdateFutureReading(FutureReadingEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+             ctx
+                 .FutureReading
+                 .Single(e => e.FutureReadingID == model.FutureReadingID && e.UserID == _userID);
+
+                entity.FutureReadingID = model.FutureReadingID;
+                entity.UserID = _userID;
+                entity.BookID = model.BookID;
+                entity.Notes = model.Notes;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool FutureReadingDelete(int futureReadingID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+            ctx
+                .FutureReading
+                .Single(e => e.FutureReadingID == futureReadingID && e.UserID == _userID);
+
+                ctx.FutureReading.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
         }
 
+
     }
+
 }

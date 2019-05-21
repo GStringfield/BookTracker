@@ -69,8 +69,14 @@ namespace BookTracker.MVC.Controllers
             return View(model);
 
         }
-      
-        //leaving out Details for now
+
+        public ActionResult Details(int futureReadingID)
+        {
+            var svc = CreateFutureReadingService();
+            var model = svc.GetBookByFutureReadingID(futureReadingID;
+
+            return View(model);
+        }
 
         public ActionResult Edit(int fututreReadingID)
         {
