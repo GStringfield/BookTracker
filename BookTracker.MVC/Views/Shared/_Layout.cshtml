@@ -25,6 +25,7 @@
 
                     <li>@Html.ActionLink("Book List", "Index", "Book")</li>
 
+
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Inventory", "Index", "BookInventory")</li>
@@ -32,10 +33,11 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("", "Index", "FutureReading")</li>
+                        <li>@Html.ActionLink("Reading List", "Index", "FutureReading")</li>
                     }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

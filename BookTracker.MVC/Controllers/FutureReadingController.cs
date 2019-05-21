@@ -1,5 +1,4 @@
 ﻿using BookTracker.Models;
-using BookTracker.Models.FutureReading;
 using BookTracker.Services;
 using Microsoft.AspNet.Identity;
 using System;

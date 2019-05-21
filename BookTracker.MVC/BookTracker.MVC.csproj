@@ -248,6 +248,9 @@
     <Content Include="Views\BookInventory\Create.cshtml" />
     <Content Include="Views\BookInventory\Edit.cshtml" />
     <Content Include="Views\FutureReading\Index.cshtml" />
+    <Content Include="Views\FutureReading\Create.cshtml" />
+    <Content Include="Views\FutureReading\Edit.cshtml" />
+    <Content Include="Views\FutureReading\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

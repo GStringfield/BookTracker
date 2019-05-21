@@ -1,6 +1,6 @@
 ﻿using BookTracker.Data;
 using BookTracker.Models;
-using BookTracker.Models.FutureReading;
+using BookTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
